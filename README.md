@@ -76,3 +76,58 @@
     git diff --cached
     git diff --staged
     ```
+## Visualizar Histórico dos Commits
+- Para listar o que foi feito no repositório através dos commits
+    
+    ```bash
+    git log
+    ```
+    *Mostrar apenas as mensagens*
+    ```bash
+    git log --oneline
+    ```
+    *Mostrar um certo numero de commits*
+    ```bash
+    git log -2
+    ```
+    *Mostrar apenas as mensagens e um certo numero de commits*
+    ```bash
+    git log --oneline -2
+    ```
+    *Mostrar as atualizações dos commits*
+    ```bash
+    git log --patch
+    git log -p
+    ```
+    *Mostrar os arquivos modificados dos commits*
+    ```bash
+    git log --stat
+    ```
+    *Mostrar os arquivos modificados dos commits de forma curta*
+    ```bash
+    git log --shortstat
+    ```
+## Alterar Commits
+- Para Alterar a mensagem do commit
+    
+    ```bash
+    git commit --amend -m "Nova mensagem"
+    git commit --amend
+    ```
+- Para Alterar somente o conteúdo do commit
+    
+    ```bash
+    git commit --amend -no-edit
+    ```
+## Alterar editor de texto
+- Para Alterar o editor de texto da mensagem do commit
+    
+    ```bash
+    git config --global core.editor "code --wait"
+    ```
+## Usar Commit anterior
+- Para restabeler um versão salva em um commit do repositorio
+    
+    ```bash
+    git checkout id-commit
+    ```
