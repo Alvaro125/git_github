@@ -66,7 +66,13 @@
 
 ## Visualizar alterações
 - Para exibir todas as diferenças entre seus commits, branch e cópias locais e o índice sincronizado
-
+    
+    *Quando o arquivo esta <ins>Modified</ins>*
     ```bash
     git diff
+    ```
+    *Quando o arquivo esta <ins>Staged</ins>*
+    ```bash
+    git diff --cached
+    git diff --staged
     ```
