@@ -65,7 +65,7 @@
 ![Alt text](image.png)
 
 ## Visualizar alterações
-- Para salvar as mudanças de arquivos ou/e pastas adicionados ao git
+- Para exibir todas as diferenças entre seus commits, branch e cópias locais e o índice sincronizado
 
     ```bash
     git diff
