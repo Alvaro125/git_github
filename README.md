@@ -354,3 +354,64 @@ o Git tem a habilidade de marcar pontos específicos na história como sendo imp
     git stash branch <nome_da_branch>
     git stash branch <nome_da_branch> <stash_especifico>
     ```
+## Revertendo Commits
+
+O comando `git revert` pode ser considerado um comando do tipo "desfazer"; no entanto, ele não é uma operação tradicional de desfazer. Em vez de remover o commit do histórico do projeto, ele descobre como inverter as alterações introduzidas pelo commit e anexa um commit novo com o conteúdo resultante. Assim, ele evita que o Git perca o histórico, o que é importante para a integridade do histórico de revisão e para uma colaboração confiável.
+- Reventer commits
+    
+    *Ultimo commit*
+    ```bash
+    git revert HEAD
+    ```
+    *Commit especifico*
+    ```bash
+    git revert <id_commit>
+    ```
+    *Reverter Commit revertido*
+    ```bash
+    git revert <id_commit> --no-edit
+    ```
+## Desfazendo Commits
+
+O `git reset` comando é uma ferramenta complexa e versátil para desfazer alterações. Possui três formas principais de invocação. Esses formulários correspondem a argumentos de linha de comando `--soft`, `--mixed`, `--hard`. Cada um dos três argumentos corresponde aos três mecanismos internos de gerenciamento de estado do Git, The Commit Tree (`HEAD`), The Staging Index e The Working Directory.
+- Esquecer os commits mais recentes de forma definitiva
+    ```bash
+    git reset --hard HEAD~<numero_de_commits>
+    ```
+- Desfazer os commits, mas mantém as alterações no seu diretório de trabalho e no índice.Os arquivos desfeitos ficam no estado "unstaged" no índice.
+    ```bash
+    git reset --soft HEAD~<numero_de_commits>
+    ```
+- Desfaz os commits e limpa o índice, mas mantém as alterações no seu diretório de trabalho.
+Os arquivos desfeitos ficam no estado "untracked" no índice.
+
+    ```bash
+    git reset --mixed HEAD~<numero_de_commits>
+    ```
+## Forçando envio de mudanças<span style="color:red">(Não Recomendado)</span>
+
+Forçar o envio do repositório local para o repositório remoto gera uma série de problemas e prejuizos caso o projeto esteja em desenvolvimento em equipe pois ao forçar o envio, certos commits serão esquecidos **Permanentemente**, pois serão reescritos pela branch forçada. 
+
+```bash
+    git push --force
+```
+Caso queira forçar mesmo assim mas quer garantir que não harerá perda de arquivos e commits no processo de reescrição, use isso:
+```bash
+    git push --force-with-lease
+```
+
+## Rebase
+Rebase é um dos dois utilitários do Git que se especializam em integrar alterações da ramificação para outra. O outro utilitário de integração de alterações é o git merge. A mesclagem (merge) é uma alteração de registro de avanço. Como outra opção, o rebase tem funções poderosas para reescrever o histórico.
+
+- Para trazer as mudanças de outra branch para a branch em uso
+    ```bash 
+    git checkout <branch>
+    git rebase <outra_branch>
+    ```
+    ```mermaid
+    graph TD;
+        A-->B;
+        A-->C;
+        B-->D;
+        C-->D;
+    ```
